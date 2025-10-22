@@ -14,7 +14,7 @@ Finalmente, hay una clase de prueba en src/test que verifica que la aplicación 
 
 En conjunto, el proyecto está bien hecho para aprender: separa muy bien cada parte, aplica reglas claras, registra los movimientos y usa buenas prácticas como el patrón estrategia. Para seguir mejorándolo, podrías agregar más pruebas, validar algunas cosas con más detalle y, si algún día se quiere hacer más grande, usar una base de datos más robusta.
 
-COMO CREAR UN CLIENTE EN THUNDER CLIENN:
+COMO CREAR UN CLIENTE EN THUNDER CLIENT:
 
 Para crear un cliente en Thunder Client, abre la extensión en VS Code y crea una nueva petición(new Request). Selecciona el método POST (que es el que se usa para registrar o crear datos) e ingresa la URL del endpoint donde tu API recibe nuevos clientes. Luego ve a la sección Body, elige el tipo JSON y escribe allí los datos del cliente que quieres crear, como el nombre, identificación y correo.
 
