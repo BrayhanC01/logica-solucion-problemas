@@ -1,3 +1,4 @@
+<h1>📖Resumen Detallado - BankApp</h1>
 Este proyecto está organizado de una forma muy clara para entender cómo funciona un pequeño sistema bancario. Todo empieza en la clase principal, que pone en marcha la aplicación. Desde allí, las operaciones se reparten entre diferentes capas para mantener el código ordenado y fácil de mantener.
 
 La primera capa es el controlador (BankController). Piensa en él como la “recepción del banco”: es el que recibe las solicitudes del usuario, como crear un cliente, hacer un depósito, retirar dinero, transferir entre cuentas o consultar los movimientos. El controlador no hace los cálculos ni toma decisiones importantes; simplemente revisa que lo que llegue tenga sentido y luego se lo pasa al servicio que realmente ejecuta la acción.
