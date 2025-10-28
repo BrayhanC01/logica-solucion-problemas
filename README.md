@@ -20,3 +20,13 @@ COMO CREAR UN CLIENTE EN THUNDER CLIENT:
 Para crear un cliente en Thunder Client, abre la extensión en VS Code y crea una nueva petición(new Request). Selecciona el método POST (que es el que se usa para registrar o crear datos) e ingresa la URL del endpoint donde tu API recibe nuevos clientes. Luego ve a la sección Body, elige el tipo JSON y escribe allí los datos del cliente que quieres crear, como el nombre, identificación y correo.
 
 Cuando tengas todo listo, presiona Send y verás la respuesta al lado derecho, donde podrás confirmar si la creación del cliente fue exitosa. Si lo fue, normalmente aparecerá el cliente creado junto con su ID. Finalmente, puedes guardar esta petición dentro de una colección en Thunder Client para usarla en futuras pruebas sin tener que volver a configurarla.
+
+<h1>⚡Thunder Client</h1>
+
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/7b35c222-eae3-4f56-aa8a-c795052f0fcf" />
+<img width="1917" height="1074" alt="image" src="https://github.com/user-attachments/assets/d2e8d595-2bcf-4d0c-b159-90f608d0e71b" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/aa1a78ac-4c13-43ef-9da6-426090b58f46" />
+
+
+
+
