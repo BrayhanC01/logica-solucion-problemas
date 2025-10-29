@@ -1,31 +1,147 @@
-<h1>📖Resumen Detallado - BankApp</h1>
-Este proyecto está organizado de una forma muy clara para entender cómo funciona un pequeño sistema bancario. Todo empieza en la clase principal, que pone en marcha la aplicación. Desde allí, las operaciones se reparten entre diferentes capas para mantener el código ordenado y fácil de mantener.
+# 🏦 BankApp - Resumen Detallado
 
-La primera capa es el controlador (BankController). Piensa en él como la “recepción del banco”: es el que recibe las solicitudes del usuario, como crear un cliente, hacer un depósito, retirar dinero, transferir entre cuentas o consultar los movimientos. El controlador no hace los cálculos ni toma decisiones importantes; simplemente revisa que lo que llegue tenga sentido y luego se lo pasa al servicio que realmente ejecuta la acción.
+Este proyecto representa un pequeño **sistema bancario** diseñado con una estructura clara y organizada, ideal para aprender buenas prácticas de **programación orientada a objetos** y **arquitectura por capas**.
 
-La lógica principal del banco está en la interfaz BankService y su implementación BankServiceImpl. Aquí es donde se aplican las reglas del negocio. Por ejemplo, antes de permitir un retiro o una transferencia, revisa si la cuenta existe, si el monto es válido y si hay suficiente dinero. También es este servicio quien registra los movimientos (transacciones) y actualiza los saldos. Si algo no se puede hacer porque rompe una regla, se lanza una excepción especial llamada DomainException que explica el problema.
+---
 
-Las clases del modelo representan los elementos reales del banco. Customer es el cliente y guarda sus cuentas. Account es la base de lo que significa tener una cuenta y maneja el saldo y los movimientos. Hay dos tipos de cuenta: CheckingAccount (cuenta corriente) y SavingsAccount (de ahorro), y cada una puede tener condiciones distintas. Transaction es como el recibo de cada movimiento realizado, y Money encapsula el manejo del dinero para evitar errores al trabajar con montos.
+## 🧩 Estructura General del Proyecto
 
-La persistencia del sistema, es decir, dónde se guardan los datos, se hace con JsonRepository. Aquí se almacenan clientes, cuentas y transacciones en archivos JSON. FileManager es quien realmente escribe y lee los archivos, mientras que JsonUtil se encarga de convertir los objetos de Java a JSON y viceversa. Es una forma simple y funcional de guardar datos, ideal para practicar, aunque no sería la mejor opción si se necesitara manejar muchos usuarios o trabajar con varias personas al mismo tiempo.
+El proyecto está dividido en varias capas, cada una con una función específica que ayuda a mantener el código limpio, ordenado y fácil de mantener.
 
-Un detalle interesante es el uso del patrón Estrategia para calcular intereses. Con la interfaz InterestStrategy y sus dos versiones (SimpleRateStrategy y TieredRateStrategy), se puede cambiar la forma de calcular intereses sin tocar el resto del código. Es como tener distintas “fórmulas” que se pueden activar según la necesidad.
+### 1️⃣ Capa de Controlador (`BankController`)
+Esta capa actúa como **la recepción del banco**.  
+Su tarea principal es **recibir las solicitudes del usuario**, como:
 
-Finalmente, hay una clase de prueba en src/test que verifica que la aplicación funciona y arranca bien. Aunque es un buen inicio, sería positivo ampliar estas pruebas para asegurar que depósitos, retiros, transferencias y la parte de guardado en archivos también se comporten correctamente.
+- Crear un cliente  
+- Realizar depósitos o retiros  
+- Transferir dinero entre cuentas  
+- Consultar movimientos  
 
-En conjunto, el proyecto está bien hecho para aprender: separa muy bien cada parte, aplica reglas claras, registra los movimientos y usa buenas prácticas como el patrón estrategia. Para seguir mejorándolo, podrías agregar más pruebas, validar algunas cosas con más detalle y, si algún día se quiere hacer más grande, usar una base de datos más robusta.
+El controlador **no realiza cálculos** ni aplica reglas de negocio; solo **valida los datos** y delega la ejecución al servicio correspondiente.
 
-COMO CREAR UN CLIENTE EN THUNDER CLIENT:
+---
 
-Para crear un cliente en Thunder Client, abre la extensión en VS Code y crea una nueva petición(new Request). Selecciona el método POST (que es el que se usa para registrar o crear datos) e ingresa la URL del endpoint donde tu API recibe nuevos clientes. Luego ve a la sección Body, elige el tipo JSON y escribe allí los datos del cliente que quieres crear, como el nombre, identificación y correo.
+### 2️⃣ Capa de Servicio (`BankService` / `BankServiceImpl`)
+Aquí se encuentra **la lógica principal del negocio bancario**.  
+Esta capa se encarga de:
 
-Cuando tengas todo listo, presiona Send y verás la respuesta al lado derecho, donde podrás confirmar si la creación del cliente fue exitosa. Si lo fue, normalmente aparecerá el cliente creado junto con su ID. Finalmente, puedes guardar esta petición dentro de una colección en Thunder Client para usarla en futuras pruebas sin tener que volver a configurarla.
+- Verificar la existencia de las cuentas  
+- Validar los montos y saldos disponibles  
+- Registrar los movimientos y actualizar los saldos  
 
-<h1>⚡Thunder Client</h1>
+Si ocurre un problema (por ejemplo, intentar retirar más dinero del disponible), se lanza una **`DomainException`** explicando el error.
+
+---
+
+### 3️⃣ Capa de Modelo (`model`)
+Las clases del modelo representan los elementos reales del banco:
+
+- **`Customer`** → Representa al cliente y almacena sus cuentas.  
+- **`Account`** → Clase base de las cuentas, maneja el saldo y movimientos.  
+- **`CheckingAccount`** → Cuenta corriente.  
+- **`SavingsAccount`** → Cuenta de ahorros (con posibles intereses).  
+- **`Transaction`** → Registra cada movimiento realizado.  
+- **`Money`** → Encapsula el manejo del dinero para evitar errores en cálculos.
+
+---
+
+### 4️⃣ Capa de Persistencia (`JsonRepository`)
+Esta capa se encarga de **guardar y recuperar los datos** del sistema.
+
+- **`JsonRepository`** → Administra el almacenamiento de clientes, cuentas y transacciones en archivos JSON.  
+- **`FileManager`** → Se encarga de leer y escribir los archivos.  
+- **`JsonUtil`** → Convierte objetos Java a JSON y viceversa.  
+
+👉 Es una solución simple y funcional para prácticas, aunque en un entorno real se usaría una base de datos más robusta.
+
+---
+
+### 5️⃣ Patrón Estrategia (`InterestStrategy`)
+Se utiliza el **patrón de diseño Estrategia** para calcular intereses.  
+Esto permite cambiar fácilmente la “fórmula” de cálculo sin alterar el resto del código.
+
+- **`InterestStrategy`** → Interfaz principal.  
+- **`SimpleRateStrategy`** → Cálculo simple de intereses.  
+- **`TieredRateStrategy`** → Cálculo por niveles.
+
+---
+
+### 6️⃣ Pruebas (`src/test`)
+Incluye una clase de prueba que verifica que la aplicación se ejecute correctamente.  
+Se recomienda **ampliar las pruebas** para cubrir depósitos, retiros, transferencias y almacenamiento en archivos.
+
+---
+
+## 🚀 Cómo Crear un Cliente en Thunder Client
+
+Puedes usar **Thunder Client (VS Code)** para probar los endpoints de tu API.  
+Sigue estos pasos para **crear un nuevo cliente**:
+
+1. Abre **Thunder Client** en VS Code.  
+2. Crea una nueva petición (**New Request**).  
+3. Selecciona el método **POST** (se usa para crear o registrar datos).  
+4. Escribe la URL del endpoint de tu API, por ejemplo:
+   http://localhost:8080/api/customers
 
 <img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/7b35c222-eae3-4f56-aa8a-c795052f0fcf" />
 <img width="1917" height="1074" alt="image" src="https://github.com/user-attachments/assets/d2e8d595-2bcf-4d0c-b159-90f608d0e71b" />
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/aa1a78ac-4c13-43ef-9da6-426090b58f46" />
+
+---
+
+## Swagger
+
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/badc1e1b-7b96-4acf-b0bf-2a62b2951ff4" />
+
+<img width="1919" height="962" alt="image" src="https://github.com/user-attachments/assets/5e5bbe23-5dad-4574-92fa-bf25bcfe9881" />
+
+<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/82811e4a-2a12-433d-904e-8c3842dea19c" />
+
+<img width="1917" height="965" alt="image" src="https://github.com/user-attachments/assets/89913f0a-de8a-416f-8e71-2e40c4057993" />
+
+<img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/9cb4102a-c499-4c8b-9856-12cd59ccf1a7" />
+
+<img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/3978129d-1ac9-49de-8f29-4d087395d313" />
+
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/fc4f15cb-d744-4127-8d8e-912075e7124d" />
+
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/ae564af1-4341-4237-9fa7-44745b379c78" />
+
+<img width="1917" height="1029" alt="image" src="https://github.com/user-attachments/assets/9e9f41c9-f5c2-4933-bd43-a5122eba61fa" />
+
+<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/d65ba41f-2edf-4d55-983d-b99c08f0d50b" />
+
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/c75a3cc7-fbbb-4be3-ab45-e9f57ee81fde" />
+
+<img width="1919" height="1075" alt="image" src="https://github.com/user-attachments/assets/1e21db8c-18f8-4b6f-b924-5b2c722b826b" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/89f64e59-b588-42a4-bbd2-fa15f679110a" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
