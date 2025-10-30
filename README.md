@@ -88,8 +88,32 @@ Sigue estos pasos para **crear un nuevo cliente**:
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/aa1a78ac-4c13-43ef-9da6-426090b58f46" />
 
 ---
+## 💬Postman
 
-## Swagger
+<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/18261515-4188-4ade-9c63-7bc622fad07e" />
+
+<img width="1919" height="1025" alt="image" src="https://github.com/user-attachments/assets/66f0b132-683b-4fdd-8445-ab6f8d1fedc1" />
+
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/0ea0f39e-3f1f-40c5-b58d-d38111a6d753" />
+
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/dd813f12-2a78-40be-9536-dc20fd6736b1" />
+
+<img width="1919" height="966" alt="image" src="https://github.com/user-attachments/assets/bdc9ddb6-7a95-4fc7-9919-ef7533f28eca" />
+
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/a8808629-454b-4268-9fa3-8457915a2106" />
+
+<img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/921aa4dd-8a49-447b-ac4c-8e0db27eb971" />
+
+<img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/c5025f4d-b29d-4fba-9ea7-7d2006e6aaa3" />
+
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/0eec81dd-ff51-43ae-b99f-02afa62fdcad" />
+
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/23f7799b-0301-479e-9d13-025bb584922b" />
+
+
+---
+
+## 🌐Swagger
 
 <img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/badc1e1b-7b96-4acf-b0bf-2a62b2951ff4" />
 
